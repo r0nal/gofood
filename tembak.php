@@ -37,13 +37,13 @@ echo " ===========================\n";
         else{
             $hp = '1'.substr(trim($nohp),0,13);
         }
-    }
+    
         $data = '{"email":"'.$email.'@gmail.com","name":"'.$nama.'","phone":"+'.$hp.'","signed_up_country":"ID"}';
         $register = request("/v5/customers", null, $data);
         if(strpos($register, '"otp_token"')){
         $otptoken = getStr('"otp_token":"','"',$register);
         echo color("green","+] Kode verifikasi sudah di kirim")."\n";
-        otp:
+        otp:}
         echo color("nevy","?] Otp: ");
         $otp = trim(fgets(STDIN));
         $data1 = '{"client_name":"gojek:cons:android","data":{"otp":"' . $otp . '","otp_token":"' . $otptoken . '"},"client_secret":"83415d06-ec4e-11e6-a41b-6c40088ab51e"}';
@@ -60,7 +60,7 @@ echo " ===========================\n";
         for($a=1;$a<=3;$a++){
         echo color("yellow",".");
         sleep(1);
-        }
+        
         $code1 = request('/go-promotions/v1/promotions/enrollments', $token, '{"promo_code":"GOFOODSANTAI19"}');
         $message = fetch_value($code1,'"message":"','"');
         if(strpos($code1, 'Promo kamu sudah bisa dipakai')){
@@ -69,7 +69,7 @@ echo " ===========================\n";
         }else{
         echo "\n".color("red","-] Message: ".$message);
         echo "\n".color("yellow","!] Claim voc GOFOODSANTUY11");
-        echo "\n".color("yellow","!] Please wait");
+        echo "\n".color("yellow","!] Please wait");}
         for($a=1;$a<=3;$a++){
         echo color("yellow",".");
         sleep(1);
